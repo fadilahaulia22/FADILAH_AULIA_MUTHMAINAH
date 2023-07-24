@@ -2,13 +2,16 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>shopiee</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!-- <link rel="stylesheet" href="style.css" /> -->
     <style>
         body {
-            background-color: #E3E7E8;
-            font-family: system-ui;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: rgb(215, 103, 140);
         }
 
         .container {
@@ -116,7 +119,6 @@
             width: 100%;
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-
         }
 
         .card .checkOut div {
@@ -160,11 +162,64 @@
         .listCard .count {
             margin: 0 10px;
         }
+
+        /* bagian data API */
+        #content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .product-card {
+            width: 280px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+
+        .product-title {
+            font-size: 1.2rem;
+            margin-top: 0;
+        }
+
+        .product-description {
+            font-size: 0.9rem;
+            color: #777;
+        }
+
+        .thumbnail {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 10px;
+        }
+
+        .product-images {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+        }
+
+        .product-images img {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 5px;
+        }
+
+        @media only screen and (max-width: 600px) {
+            .product-card {
+                width: 100%;
+            }
+        }
     </style>
 </head>
 
-<body class="">
-
+<body>
     <div class="container">
         <header>
             <h1>Your Shopping Cart</h1>
@@ -188,109 +243,181 @@
         </div>
     </div>
 
+    <!-- div untuk menampilkan API -->
+    <div class="slideshow-container" id="content"></div>
+
+
+
+
     <script>
-        // menampilkan data dari API
-        fetch('https://dummyjson.com/products')
-            .then(res => res.json())
-            .then(json => {
-                const data = json.products;
-                displayProducts(data);
+        fetch("https://dummyjson.com/products")
+            .then(function (response) {
+                return response.json();
             })
-            .catch(error => {
-                console.error('Error fetching products:', error);
+            .then(function (data) {
+                const ambilData = data.products;
+                ambilData.forEach((e) => {
+                    const list = document.querySelector("#content");
+                    const elementProducts = document.createElement("div");
+                    elementProducts.classList.add("product-card");
+
+                    const judul = document.createElement("h3");
+                    judul.textContent = e.title;
+                    judul.classList.add("product-title");
+
+                    const deskripsi = document.createElement("p");
+                    deskripsi.textContent = e.description;
+                    deskripsi.classList.add("product-description");
+
+                    const gambarThumbnail = document.createElement("img");
+                    gambarThumbnail.src = e.thumbnail;
+                    gambarThumbnail.classList.add("thumbnail");
+
+                    const productImages = document.createElement("div");
+                    productImages.classList.add("product-images");
+
+                    const images = e.images;
+                    images.forEach((imageUrl) => {
+                        const gambar = document.createElement("img");
+                        gambar.classList.add("product-image");
+                        gambar.src = imageUrl;
+
+                        productImages.appendChild(gambar);
+                    });
+
+                    const price = document.createElement("h4");
+                    price.textContent = `Price: $${e.price}`;
+                    price.classList.add("product-price");
+
+                    const addToCartButton = document.createElement("button");
+                    addToCartButton.textContent = "Add to Cart";
+                    addToCartButton.classList.add("add-to-cart");
+
+                    elementProducts.appendChild(judul);
+                    elementProducts.appendChild(deskripsi);
+                    elementProducts.appendChild(gambarThumbnail);
+                    elementProducts.appendChild(productImages);
+                    elementProducts.appendChild(price);
+                    elementProducts.appendChild(addToCartButton); // Add the "Add to Cart" button
+
+                    list.appendChild(elementProducts);
+                });
             });
 
-        function displayProducts(products) {
-            const content = document.querySelector('.list');
 
-            products.forEach(product => {
-                const productCard = document.createElement('div');
-                productCard.classList.add('product-card');
 
-                const name = document.createElement('h2');
-                name.textContent = product.name;
-                productCard.appendChild(name);
+        // keranjang
+        let openShopping = document.querySelector('.shopping');
+        let closeShopping = document.querySelector('.closeShopping');
+        let list = document.querySelector('.list');
+        let listCard = document.querySelector('.listCard');
+        let body = document.querySelector('body');
+        let total = document.querySelector('.total');
+        let quantity = document.querySelector('.quantity');
 
-                const title = document.createElement('p');
-                title.textContent = `Title: ${product.title}`;
-                productCard.appendChild(title);
+        openShopping.addEventListener('click', () => {
+            body.classList.add('active');
+        })
+        closeShopping.addEventListener('click', () => {
+            body.classList.remove('active');
+        })
 
-                const price = document.createElement('p');
-                price.textContent = `Price: $${product.price}`;
-                productCard.appendChild(price);
 
-                const diskon = document.createElement('p');
-                diskon.textContent = `Diskon: ${product.discountPercentage}`;
-                productCard.appendChild(diskon);
 
-                const stok = document.createElement('p');
-                stok.textContent = `Stock: ${product.stock}`;
-                productCard.appendChild(stok);
 
-                content.appendChild(productCard);
-            })
+        // Function to handle adding a product to the cart
+        function addToCart(product) {
+            const listItem = document.createElement("li");
+            listItem.innerHTML = `
+            <div><img src="${product.thumbnail}" alt="${product.title}" /></div>
+            <div class="product-details">
+                <div>${product.title}</div>
+                <div class="price">$${product.price}</div>
+                <button class="remove-item">Remove</button>
+            </div>
+            <div class="count">
+                <button class="decrement">-</button>
+                <span>1</span>
+                <button class="increment">+</button>
+            </div>
+        `;
 
-            // Your existing code for the shopping cart functionality
+            // Handle "Remove" button click
+            const removeButton = listItem.querySelector(".remove-item");
+            removeButton.addEventListener("click", () => {
+                listCard.removeChild(listItem);
+                updateCartTotal();
+            });
 
-            // let openShopping = document.querySelector('.shopping');
-            // let closeShopping = document.querySelector('.closeShopping');
-            // let list = document.querySelector('.list');
-            // let listCard = document.querySelector('.listCard');
-            // let body = document.querySelector('body');
-            // let total = document.querySelector('.total');
-            // let quantity = document.querySelector('.quantity');
+            // Handle "Increment" and "Decrement" button clicks
+            const incrementButton = listItem.querySelector(".increment");
+            const decrementButton = listItem.querySelector(".decrement");
+            const quantitySpan = listItem.querySelector("span");
 
-            // openShopping.addEventListener('click', () => {
-            //     body.classList.add('active');
-            // })
-            // closeShopping.addEventListener('click', () => {
-            //     body.classList.remove('active');
-            // })
+            incrementButton.addEventListener("click", () => {
+                let count = parseInt(quantitySpan.textContent);
+                count++;
+                quantitySpan.textContent = count;
+                updateCartTotal();
+            });
 
-            //     initApp();
-            //     function addToCard(key) {
-            //         if (listCards[key] == null) {
-            //             // copy product form list to list card
-            //             listCards[key] = JSON.parse(JSON.stringify(products[key]));
-            //             listCards[key].quantity = 1;
-            //         }
-            //         reloadCard();
-            //     }
-            //     function reloadCard() {
-            //         listCard.innerHTML = '';
-            //         let count = 0;
-            //         let totalPrice = 0;
-            //         listCards.forEach((value, key) => {
-            //             totalPrice = totalPrice + value.price;
-            //             count = count + value.quantity;
-            //             if (value != null) {
-            //                 let newDiv = document.createElement('li');
-            //                 newDiv.innerHTML = `
-            // <div><img src="image/${value.image}" /></div>
-            // <div>${value.name}</div>
-            // <div>${value.price.toLocaleString()}</div>
-            // <div>
-            //     <button onclick="changeQuantity(${key}, ${value.quantity - 1})">-</button>
-            //     <div class="count">${value.quantity}</div>
-            //     <button onclick="changeQuantity(${key}, ${value.quantity + 1})">+</button>
-            // </div>`;
-            //                 listCard.appendChild(newDiv);
-            //             }
-            //         })
-            //         total.innerText = totalPrice.toLocaleString();
-            //         quantity.innerText = count;
-            //     }
-            //     function changeQuantity(key, quantity) {
-            //         if (quantity == 0) {
-            //             delete listCards[key];
-            //         } else {
-            //             listCards[key].quantity = quantity;
-            //             listCards[key].price = quantity * products[key].price;
-            //         }
-            //         reloadCard();
+            decrementButton.addEventListener("click", () => {
+                let count = parseInt(quantitySpan.textContent);
+                if (count > 1) {
+                    count--;
+                    quantitySpan.textContent = count;
+                    updateCartTotal();
+                }
+            });
+
+            listCard.appendChild(listItem);
+            updateCartTotal();
         }
-    </script>
 
+        // // Function to update the cart total
+        function updateCartTotal() {
+            const cartItems = document.querySelectorAll(".listCard li");
+            let totalAmount = 0;
+            let totalCount = 0;
+
+            cartItems.forEach((item) => {
+                const price = parseFloat(
+                    item.querySelector(".price").textContent.replace("$", "")
+                );
+                const count = parseInt(item.querySelector("span").textContent);
+
+                totalAmount += price * count;
+                totalCount += count;
+            });
+
+            total.textContent = `$${totalAmount.toFixed(2)}`;
+            quantity.textContent = totalCount;
+        }
+
+        // // Event delegation to handle "Add to Cart" button clicks
+        document.querySelector("#content").addEventListener("click", (event) => {
+            if (event.target.classList.contains("add-to-cart")) {
+                const productCard = event.target.closest(".product-card");
+                const title = productCard.querySelector(".product-title").textContent;
+                const price = parseFloat(productCard.querySelector(".product-price").textContent.replace("$", ""));
+                const thumbnail = productCard.querySelector(".thumbnail").src;
+
+                const product = {
+                    title: title,
+                    price: price,
+                    thumbnail: thumbnail
+                };
+
+                addToCart(product);
+            }
+        });
+
+
+
+
+
+
+    </script>
 </body>
 
 </html>
