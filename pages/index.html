@@ -5,128 +5,199 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- link untuk mangmabil icon -->
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet" href="index.css">
 </head>
 
 <body>
+    <!-- Header -->
     <header>
         <div class="container">
-            <nav class="navbar">
-                <a href="#" class="nav-branding">DUMP.</a>
-                <ul class="nav-menu">
-                    <li class="nav-item">
-                        <a href="#" class="nav-link">Home</a>
+            <nav class="nav">
+                <a href="#" class="nav_logo">DUMP.</a>
+
+                <ul class="nav_items">
+                    <li class="nav_item">
+                        <a href="#" class="nav_link">Home</a>
                     </li>
-                    <li class="nav-item">
-                        <a href="about.html" class="nav-link">About</a>
+                    <li class="nav_item">
+                        <a href="shop.html" class="nav_link">Shop</a>
                     </li>
-                    <li class="nav-item">
-                        <a href="shop.html" class="nav-link">Shop</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="contact.html" class="nav-link">Contact</a>
+                    <li class="nav_item">
+                        <a href="contact.html" class="nav_link">Contact</a>
                     </li>
                 </ul>
+
                 <div class="hamburger">
                     <span class="bar"></span>
                     <span class="bar"></span>
                     <span class="bar"></span>
                 </div>
+
+                <button class="button" id="form-open">Login</button>
             </nav>
         </div>
     </header>
 
-    <!-- main -->
+    <!-- Home -->
+    <section class="home">
 
-    <main>
-        <div class="slide-content">
-            <div class="card-wrapper">
+        <div class="home_content">
+            <h1>Welcome to DUMP.</h1>
+            <p>Explore our amazing products and get started!</p>
+            <br><br>
+            <button class="button"><a href="shop.html">Shop</a></button>
+        </div>
 
-                <div class="card">
-                    <div class="image-content">
-                        <span class="overlay"></span>
+        <!-- FORM -->
+        <div class="form_container">
+            <i class="material-symbols-outlined form_close">close</i>
+            <!-- Login From -->
+            <div class="form login_form">
+                <form action="#">
+                    <h2>Login</h2>
 
-                        <div class="card-image">
-                            <img src="../asset/Abilerim ve İkizim (TAMAMLANDI).jpeg" alt="" class="card-img">
-                        </div>
+                    <div class="input_box">
+                        <input type="email" placeholder="Enter your email" required />
+                        <i class="material-symbols-outlined email">mail</i>
                     </div>
-                    <div class="card-content">
-                        <h2 class="item">I-Phone</h2>
-                        <p class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius, quia
-                            earum corporis nam culpa debitis nesciunt enim quaerat maxime quidem deserunt explicabo
-                            hic adipisci quos saepe suscipit.
-                        </p>
+                    <div class="input_box">
+                        <input type="password" placeholder="Enter your password" required />
+                        <i class="material-symbols-outlined password">lock</i>
+                        <i class="material-symbols-outlined pw_hide">visibility_off</i>
+                    </div>
 
-                        <button class="button">View More</button>
+                    <div class="option_field">
+                        <span class="checkbox">
+                            <input type="checkbox" id="check" />
+                            <label for="check">Remember me</label>
+                        </span>
+                        <a href="#" class="forgot_pw">Forgot password?</a>
+                    </div>
+
+                    <button class="button">Login Now</button>
+
+                    <div class="login_signup">Don't have an account? <a href="#" id="signup">Signup</a></div>
+                </form>
+            </div>
+
+            <!-- Signup From -->
+            <div class="form signup_form">
+                <form action="#">
+                    <h2>Signup</h2>
+
+                    <div class="input_box">
+                        <input type="email" placeholder="Enter your email" required />
+                        <i class="material-symbols-outlined email">mail</i>
+                    </div>
+                    <div class="input_box">
+                        <input type="password" placeholder="Create password" required />
+                        <i class="material-symbols-outlined password">lock</i>
+                        <i class="material-symbols-outlined pw_hide">visibility_off</i>
+                    </div>
+                    <div class="input_box">
+                        <input type="password" placeholder="Confirm password" required />
+                        <i class="material-symbols-outlined password">lock</i>
+                        <i class="material-symbols-outlined pw_hide">visibility_off</i>
+                    </div>
+
+                    <button class="button">Signup Now</button>
+
+                    <div class="login_signup">Already have an account? <a href="#" id="login">Login</a></div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Catalog -->
+    <div class="catalog">
+        <div class="wrapper">
+            <h3>Koleksi Item</h3>
+        </div>
+        <div class="wrapper">
+            <div class="catalog-item">
+                <img src="../asset/gambar.jpeg" alt="">
+                <div class="desc">
+                    <div class="title">
+                        <h5>Earphone</h5>
+                    </div>
+                    <div class="price">
+                        Rp. 100.000
                     </div>
                 </div>
 
-                <div class="card-wrapper">
-                    <div class="card">
-                        <div class="image-content">
-                            <span class="overlay"></span>
-
-                            <div class="card-image">
-                                <img src="../asset/Laptop.jpeg" alt="" class="card-img">
-                            </div>
-                        </div>
-                        <div class="card-content">
-                            <h2 class="item">I-Pad</h2>
-                            <p class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius,
-                                quia
-                                earum corporis nam culpa debitis nesciunt enim quaerat maxime quidem deserunt
-                                explicabo
-                                hic adipisci quos saepe suscipit.
-                            </p>
-
-                            <button class="button">View More</button>
-                        </div>
+            </div>
+            <div class="catalog-item">
+                <img src="../asset/The Only Certified Phone Repair in Singapore.jpeg" alt="">
+                <div class="desc">
+                    <div class="title">
+                        <h5>Samsungsung</h5>
+                    </div>
+                    <div class="price">
+                        Rp. 2.000.000
                     </div>
                 </div>
 
-                <div class="card-wrapper">
-                    <div class="card">
-                        <div class="image-content">
-                            <span class="overlay"></span>
+            </div>
+            <div class="catalog-item">
+                <img src="../asset/ARMANI BEAUTY My Way Intense Floral Fragrance.jpeg" alt="">
+                <div class="desc">
+                    <div class="title">
+                        <h5>Buah Cherry</h5>
+                    </div>
+                    <div class="price">
+                        Rp. 70.000
+                    </div>
+                </div>
 
-                            <div class="card-image">
-                                <img src="../asset/The Only Certified Phone Repair in Singapore.jpeg" alt=""
-                                    class="card-img">
-                            </div>
-                        </div>
-                        <div class="card-content">
-                            <h2 class="item">I-Phone</h2>
-                            <p class="description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius,
-                                quia
-                                earum corporis nam culpa debitis nesciunt enim quaerat maxime quidem deserunt
-                                explicabo
-                                hic adipisci quos saepe suscipit.
-                            </p>
+            </div>
+            <div class="catalog-item">
+                <img src="../asset/Accesorios de plásico para lucir como una aesthetic doll.png" alt="">
+                <div class="desc">
+                    <div class="title">
+                        <h5>Parfum</h5>
+                    </div>
+                    <div class="price">
+                        Rp. 20.000
+                    </div>
+                </div>
 
-                            <button class="button">View More</button>
-                        </div>
+            </div>
+            <div class="catalog-item">
+                <img src="../asset/download (3).jpeg" alt="">
+                <div class="desc">
+                    <div class="title">
+                        <h5>Aplle Watch</h5>
+                    </div>
+                    <div class="price">
+                        Rp. 1.200.000
                     </div>
                 </div>
 
             </div>
         </div>
+    </div>
+    <!-- Catalog -->
 
 
-        <!-- about -->
-        <div id="about">
-
-        </div>
-
-
-    </main>
+    <!-- FOOTER -->
     <footer>
         <div class="footer">
             <div class="social">
-                <a href="#"><i class="fab fa-instagram"></i></a>
-                <a href="#"><i class="fab fa-snapchat"></i></a>
-                <a href="#"><i class="fab fa-twitter"></i></a>
-                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#">
+                    <img src="../asset/facebook-app-symbol.png" alt="">
+                </a>
+                <a href="#">
+                    <img src="../asset/instagram.png" alt="">
+                </a>
+                <a href="#">
+                    <img src="../asset/twitter.png" alt="">
+                </a>
+                <a href="#">
+                    <img src="../asset/youtube.png" alt="">
+                </a>
             </div>
             <ul class="list">
                 <li>
@@ -150,11 +221,10 @@
             </p>
         </div>
     </footer>
+    <!-- END FOOTER -->
 
 
-    <script src="script.js">
-
-    </script>
+    <script src="script.js"></script>
 </body>
 
 </html>

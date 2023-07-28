@@ -11,11 +11,48 @@
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: rgb(215, 103, 140);
         }
 
+        main {
+            background: url(../asset/Hot_Item.jpg);
+        }
+
+
+        /* navbar */
+        #navbar {
+            background-color: teal;
+            position: fixed;
+            /* membuat stick/fixed */
+            top: -50px;
+            /* Hide the navbar 50 px outside of the top view */
+            width: 100%;
+            /* Full width */
+            transition: top 0.3s;
+            /* Transition effect when sliding down (and up) */
+        }
+
+        /* Style the navbar links */
+        #navbar a {
+            float: left;
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 15px;
+            text-decoration: none;
+        }
+
+        #navbar a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+
+        /*  */
         .container {
+            border-radius: 15px;
+            background-color: #DCE0E1;
             width: 1000px;
+            height: 80px;
+            padding: 0;
             margin: auto;
             transition: 0.5s;
         }
@@ -23,12 +60,13 @@
         header {
             display: grid;
             grid-template-columns: 1fr 50px;
-            margin-top: 50px;
+            /* margin-top: 20px; */
         }
 
         header .shopping {
             position: relative;
             text-align: right;
+            margin-top: 15px;
         }
 
         header .shopping img {
@@ -137,30 +175,118 @@
             color: #fff;
         }
 
-        .listCard li {
-            display: grid;
-            grid-template-columns: 100px repeat(3, 1fr);
-            color: #fff;
-            row-gap: 10px;
-        }
-
-        .listCard li div {
+        /* part slide show */
+        section {
+            margin: 0;
+            padding: 0px;
+            height: 80vh;
             display: flex;
             justify-content: center;
             align-items: center;
         }
 
-        .listCard li img {
-            width: 90%;
+        .slider {
+            width: 851px;
+            height: 336px;
+            border-radius: 10px;
+            overflow: hidden;
         }
 
-        .listCard li button {
-            background-color: #fff5;
-            border: none;
+        .slides {
+            width: 336%;
+            height: 336px;
+            display: flex;
         }
 
-        .listCard .count {
-            margin: 0 10px;
+        .slides input {
+            display: none;
+        }
+
+        .slide {
+            width: 20%;
+            transition: 2s;
+        }
+
+        .slide img {
+            width: 851px;
+            height: 336px;
+        }
+
+        /* css for navigation manual */
+        .navigation-manual {
+            position: absolute;
+            width: 800px;
+            margin-top: -40px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .manual-btn {
+            border: 2px solid rgb(44, 42, 10);
+            padding: 5px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: 1s;
+        }
+
+        .manual-btn:not(:last-child) {
+            margin-right: 40px;
+        }
+
+        .manual-btn:hover {
+            background: palevioletred;
+        }
+
+        #radio1:checked~.first {
+            margin-left: 0;
+        }
+
+        #radio2:checked~.first {
+            margin-left: -20%;
+        }
+
+        #radio3:checked~.first {
+            margin-left: -40%;
+        }
+
+        #radio4:checked~.first {
+            margin-left: -60%;
+        }
+
+        /* for automatic slide */
+        .navigation-auto {
+            position: absolute;
+            display: flex;
+            width: 800px;
+            justify-content: center;
+            margin-top: 296px;
+        }
+
+        .navigation-auto div {
+            border: 2px solid palevioletred;
+            padding: 5px;
+            border-radius: 10px;
+            transition: 1s;
+        }
+
+        .navigation-auto div:not(:last-child) {
+            margin-right: 40px;
+        }
+
+        #radio1:checked~.navigation-auto .auto-btn1 {
+            background: black;
+        }
+
+        #radio1:checked~.navigation-auto .auto-btn2 {
+            background: black;
+        }
+
+        #radio1:checked~.navigation-auto .auto-btn3 {
+            background: black;
+        }
+
+        #radio1:checked~.navigation-auto .auto-btn4 {
+            background: black;
         }
 
         /* bagian data API */
@@ -169,7 +295,7 @@
             flex-wrap: wrap;
             justify-content: center;
             gap: 20px;
-            padding: 20px;
+            padding: 10px;            
         }
 
         .product-card {
@@ -216,10 +342,18 @@
                 width: 100%;
             }
         }
+
+    
     </style>
 </head>
 
 <body>
+    <div id="navbar">
+        <a href="index.html">Home</a>
+        <a href="shop.html">Shop</a>
+        <a href="contact.html">Contact</a>
+    </div>
+    <!--  -->
     <div class="container">
         <header>
             <h1>Your Shopping Cart</h1>
@@ -235,21 +369,72 @@
     </div>
     <div class="card">
         <h1>Card</h1>
-        <ul class="listCard">
-        </ul>
+
         <div class="checkOut">
             <div class="total">0</div>
             <div class="closeShopping">Close</div>
         </div>
     </div>
 
-    <!-- div untuk menampilkan API -->
-    <div class="slideshow-container" id="content"></div>
+    <!-- slide show -->
+    <main>
+        <section>
+            <div class="slider">
+                <div class="slides">
+                    <input type="radio" name="radio-btn" id="radio1">
+                    <input type="radio" name="radio-btn" id="radio2">
+                    <input type="radio" name="radio-btn" id="radio3">
+                    <input type="radio" name="radio-btn" id="radio4">
 
+                    <div class="slide first">
+                        <img src="../asset/Banner-_851x336_-Weekly-Discount-19-juli.jpg" alt="">
+                    </div>
+                    <div class="slide">
+                        <img src="../asset/home-free-ongkir-juli23.jpg" alt="">
+                    </div>
+                    <div class="slide">
+                        <img src="../asset/home-samsung-Q80C.jpg" alt="">
+                    </div>
+                    <div>
+                        <img src="../asset/morris-eau-de-parfum-solusi-parfum-cantik-khusus-hijabers.jpeg" alt="">
+                    </div>
+                    <!-- automatic navigation -->
+                    <div class="navigation-auto">
+                        <div class="auto-btn1"></div>
+                        <div class="auto-btn2"></div>
+                        <div class="auto-btn3"></div>
+                        <div class="auto-btn4"></div>
+                    </div>
+                </div>
+                <!-- manual navigation -->
+                <div class="navigation-manual">
+                    <label for="radio1" class="manual-btn"></label>
+                    <label for="radio2" class="manual-btn"></label>
+                    <label for="radio3" class="manual-btn"></label>
+                    <label for="radio4" class="manual-btn"></label>
+                </div>
+            </div>
+        </section>
 
+        <!-- div untuk menampilkan API -->
+        <div class="slideshow-container" id="content"></div>
+
+    </main>
 
 
     <script>
+        // navbar
+        window.onscroll = function () { scrollFunction() };
+
+        function scrollFunction() {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                document.getElementById("navbar").style.top = "0";
+            } else {
+                document.getElementById("navbar").style.top = "-50px";
+            }
+        }
+        // end
+        // untuk menampilkan data api
         fetch("https://dummyjson.com/products")
             .then(function (response) {
                 return response.json();
@@ -298,19 +483,16 @@
                     elementProducts.appendChild(gambarThumbnail);
                     elementProducts.appendChild(productImages);
                     elementProducts.appendChild(price);
-                    elementProducts.appendChild(addToCartButton); // Add the "Add to Cart" button
+                    elementProducts.appendChild(addToCartButton); //  "nambahin to Cart" button
 
                     list.appendChild(elementProducts);
                 });
             });
 
-
-
         // keranjang
         let openShopping = document.querySelector('.shopping');
         let closeShopping = document.querySelector('.closeShopping');
         let list = document.querySelector('.list');
-        let listCard = document.querySelector('.listCard');
         let body = document.querySelector('body');
         let total = document.querySelector('.total');
         let quantity = document.querySelector('.quantity');
@@ -322,101 +504,16 @@
             body.classList.remove('active');
         })
 
-
-
-
-        // Function to handle adding a product to the cart
-        function addToCart(product) {
-            const listItem = document.createElement("li");
-            listItem.innerHTML = `
-            <div><img src="${product.thumbnail}" alt="${product.title}" /></div>
-            <div class="product-details">
-                <div>${product.title}</div>
-                <div class="price">$${product.price}</div>
-                <button class="remove-item">Remove</button>
-            </div>
-            <div class="count">
-                <button class="decrement">-</button>
-                <span>1</span>
-                <button class="increment">+</button>
-            </div>
-        `;
-
-            // Handle "Remove" button click
-            const removeButton = listItem.querySelector(".remove-item");
-            removeButton.addEventListener("click", () => {
-                listCard.removeChild(listItem);
-                updateCartTotal();
-            });
-
-            // Handle "Increment" and "Decrement" button clicks
-            const incrementButton = listItem.querySelector(".increment");
-            const decrementButton = listItem.querySelector(".decrement");
-            const quantitySpan = listItem.querySelector("span");
-
-            incrementButton.addEventListener("click", () => {
-                let count = parseInt(quantitySpan.textContent);
-                count++;
-                quantitySpan.textContent = count;
-                updateCartTotal();
-            });
-
-            decrementButton.addEventListener("click", () => {
-                let count = parseInt(quantitySpan.textContent);
-                if (count > 1) {
-                    count--;
-                    quantitySpan.textContent = count;
-                    updateCartTotal();
-                }
-            });
-
-            listCard.appendChild(listItem);
-            updateCartTotal();
-        }
-
-        // // Function to update the cart total
-        function updateCartTotal() {
-            const cartItems = document.querySelectorAll(".listCard li");
-            let totalAmount = 0;
-            let totalCount = 0;
-
-            cartItems.forEach((item) => {
-                const price = parseFloat(
-                    item.querySelector(".price").textContent.replace("$", "")
-                );
-                const count = parseInt(item.querySelector("span").textContent);
-
-                totalAmount += price * count;
-                totalCount += count;
-            });
-
-            total.textContent = `$${totalAmount.toFixed(2)}`;
-            quantity.textContent = totalCount;
-        }
-
-        // // Event delegation to handle "Add to Cart" button clicks
-        document.querySelector("#content").addEventListener("click", (event) => {
-            if (event.target.classList.contains("add-to-cart")) {
-                const productCard = event.target.closest(".product-card");
-                const title = productCard.querySelector(".product-title").textContent;
-                const price = parseFloat(productCard.querySelector(".product-price").textContent.replace("$", ""));
-                const thumbnail = productCard.querySelector(".thumbnail").src;
-
-                const product = {
-                    title: title,
-                    price: price,
-                    thumbnail: thumbnail
-                };
-
-                addToCart(product);
+        // slide show
+        let counter = 1;
+        setInterval(function () {
+            document.getElementById('radio' + counter).checked = true;
+            counter++;
+            if (counter > 4) {
+                counter = 1;
             }
-        });
-
-
-
-
-
-
+        }, 4000);
+        
     </script>
 </body>
 

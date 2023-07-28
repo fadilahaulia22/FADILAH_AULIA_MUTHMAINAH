@@ -5,253 +5,89 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <style>
-        .material-symbols-outlined {
-            font-variation-settings:
-                'FILL' 0,
-                'wght' 400,
-                'GRAD' 0,
-                'opsz' 48
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-        }
-
-        body {
-            background-color: #f0f0f0;
-        }
-
-        header {
-            background-color: #fff;
-            padding: 20px;
-            text-align: center;
-        }
-
-        .google-map {
-            width: 100%;
-            height: 70vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-direction: column;
-        }
-
-        h1 {
-            color: rgb(65, 64, 64);
-            margin-bottom: 20px;
-        }
-
-        iframe {
-            width: 90%;
-            height: 400px;
-            border: 1px solid #ccc;
-            border-radius: 8px;
-        }
-
-        footer {
-            position: fixed;
-            bottom: 0;
-        }
-
-        .footer {
-            background-color: teal;
-            box-sizing: border-box;
-            width: 100%;
-            text-align: left;
-            font: bold 10px sans-serif;
-            padding: 50px 50px 60px 50px;
-            margin-top: 80px;
-        }
-
-        .footer .footer-left,
-        .footer .footer-center,
-        .footer .footer-right {
-            display: inline-block;
-            vertical-align: top;
-        }
-
-        @media (max-height:800px) {
-            footer {
-                position: static;
-            }
-
-            header {
-                padding-top: 40px;
-            }
-        }
-
-        .footer .footer-left {
-            width: 30%;
-        }
-
-        .footer h3 {
-            color: azure;
-            margin: 0;
-            padding-bottom: 20px;
-            font-family: Georgia, 'Times New Roman', Times, serif;
-        }
-
-        .footer .footer-left img {
-            width: 25%;
-            vertical-align: middle;
-        }
-
-        .footer .footer-left .credit-card {
-            width: 100%;
-        }
-
-        .footer .footer-copy {
-            color: #777;
-            font-size: 14px;
-            font-weight: normal;
-            margin: 0;
-            padding-top: 10%;
-        }
-
-        .footer .footer-center {
-            width: 35%;
-        }
-
-        .footer .footer-center i {
-            background-color: #33383b;
-            color: #ffffff;
-            font-size: 25px;
-            width: 38px;
-            height: 38px;
-            border-radius: 50%;
-            text-align: center;
-            line-height: 42px;
-            margin: 10px 15px;
-            vertical-align: middle;
-        }
-
-        .footer .footer-center i.fa-envelope {
-            font-size: 17px;
-            line-height: 38px;
-        }
-
-        .footer .footer-center p {
-            display: inline-block;
-            color: #ffffff;
-            vertical-align: middle;
-            margin: 0px;
-            font-size: 14px;
-        }
-
-        .footer .footer-center p span {
-            display: block;
-            font-weight: normal;
-            font-size: 15px;
-            line-height: 2;
-        }
-
-        .footer .footer-center p a {
-            color: rgb(22, 255, 177);
-            text-decoration: none;
-        }
-
-        .footer .footer-right {
-            width: 30%;
-        }
-
-        .footer .footer-about {
-            line-height: 20px;
-            color: #92999f;
-            font-size: 13px;
-            font-weight: normal;
-            margin: 0px;
-        }
-
-        .footer .footer-about span {
-            display: block;
-            color: #ffffff;
-            font-size: 18px;
-            font-weight: bold;
-            margin-bottom: 20px;
-        }
-
-        .footer .footer-media {
-            margin-top: 25px;
-        }
-
-        .footer .footer-media a {
-            display: inline-block;
-            width: 50px;
-            height: 50px;
-            cursor: pointer;
-            background-color: #33383b;
-            border-radius: 50%;
-            font-size: 20px;
-            color: #ffffff;
-            text-align: center;
-            line-height: 50px;
-            margin-right: 3px;
-            margin-bottom: 5px;
-        }
-
-        .footer .footer-media a:hover {
-            background-color: rgb(0, 122, 82);
-        }
-
-        /* responsive */
-        @media (max-width: 880px) {
-
-            .footer .footer-left,
-            .footer .footer-center,
-            .footer .footer-right {
-                display: block;
-                width: 100%;
-                margin-bottom: 40px;
-                text-align: left;
-            }
-
-            .footer .footer-center i {
-                margin-left: 0px;
-            }
-        }
-
-    </style>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet" href="contact.css">
 </head>
 
 <body>
-    <header>
-        <div class="google-map">
-            <h1>Location Map</h1>
-            <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d126748.56211042157!2d107.64315755000001!3d-6.903449449999993!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68e6398252477f%3A0x146a1f93d3e815b2!2sBandung%2C%20Kota%20Bandung%2C%20Jawa%20Barat!5e0!3m2!1sid!2sid!4v1690087553186!5m2!1sid!2sid"
-                width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
-                referrerpolicy="no-referrer-when-downgrade">
-            </iframe>
-        </div>
-    </header>
+    <!-- untuk tombol navbar -->
+    <div id="navbar">
+        <a href="index.html">Home</a>
+        <a href="shop.html">Shop</a>
+        <a href="contact.html">Contact</a>
+    </div>
 
+    <!-- untuk nampilin peta -->
+    <div class="google-map">
+        <h1>Location Map</h1>
+        <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d126748.56211042157!2d107.64315755000001!3d-6.903449449999993!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68e6398252477f%3A0x146a1f93d3e815b2!2sBandung%2C%20Kota%20Bandung%2C%20Jawa%20Barat!5e0!3m2!1sid!2sid!4v1690087553186!5m2!1sid!2sid"
+            width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+    </div>
+
+    <!-- about founder -->
+    <h3>Brand Profil</h3>
+    <div class="propil">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim soluta doloremque, facere veniam neque dicta vitae
+        quo consequatur praesentium similique sequi adipisci debitis veritatis laudantium quos reprehenderit placeat.
+        Officia, ducimus.
+        Odio, ad ullam? Nostrum recusandae nesciunt ipsa? Aut, mollitia incidunt. Nesciunt quaerat necessitatibus
+        aliquam libero, rerum ab dolore atque, blanditiis perspiciatis recusandae tempore unde sequi quam odit itaque ut
+        sapiente?
+        Reprehenderit iusto rerum mollitia odio consequuntur corrupti ea! Vel, in ad unde porro numquam nulla quod
+        nesciunt exercitationem. Velit enim vitae non placeat mollitia fuga laboriosam qui cum obcaecati ea?
+    </div>
+    <div class="moreblas" id="moreButton">
+        <img src="../asset/whitearrow.png" alt="" class="hideimg" id="whiteArrowImg">
+        <img src="../asset/graylink.png" alt="" class="showimg" id="grayLinkImg">
+        Show More
+    </div>
+
+    <div class="founder-profile">
+        <div class="photo">
+            <img src="../asset/aril on Twitter.jpeg" alt="">
+        </div>
+        <div class="ket">
+            <h2>Founder</h2>
+            <p>
+                <b>Ye Guofu</b> Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam, alias eum? Nihil
+                veritatis voluptate laboriosam, totam suscipit, ratione inventore quis similique ullam distinctio at!
+                Odit sunt velit sequi veniam non.
+                As the founder and CEO of MINISO, Ye Guofu accumulated immense mastery in trendy fashion during the
+                period
+                of Chinese economic transformation and seized the opportunity to improve the social quality consumption
+                patterns, bringing a brand new business model in China, which almost monopolized China’s offline flow of
+                customers.
+            </p>
+        </div>
+    </div>
+    <!-- end -->
+
+    <!-- FOOTER -->
     <footer class="footer">
         <div class="footer-left">
             <h3>Payment Method</h3>
             <div class="credit-card">
-                <img src="../ASSET/visa.png" alt="">
-                <img src="../ASSET/mastercard (1).png" alt="">
-                <img src="../ASSET/paypal.png" alt="">
+                <img src="../asset/visa.png" alt="">
+                <img src="../asset/mastercard (1).png" alt="">
+                <img src="../asset/paypal.png" alt="">
             </div>
             <p class="copy">2023 DUMP</p>
         </div>
 
         <div class="footer-center">
             <div>
-                <i class="fa fa-map-marker"></i>
+                <i class="material-symbols-outlined">location_on</i>
                 <p><span>Indonesia</span> Jawa Barat, Bandung</p>
             </div>
             <div>
-                <i class="fa fa-phone"></i>
+                <i class="material-symbols-outlined">phone_in_talk</i>
                 <p>+62 077-777-77</p>
             </div>
             <div>
-                <i class="fa fa-envelope"></i>
+                <i class="material-symbols-outlined">mail</i>
                 <p><a href="#">support@gmail.com</a></p>
             </div>
         </div>
@@ -269,18 +105,65 @@
             </p>
 
             <div class="footer-media">
-                <a href="#"><i class="fa fa-youtube"></i></a>
-                <a href="#"><i class="fa fa-facebook"></i></a>
-                <a href="#"><i class="fa fa-twitter"></i></a>
-                <a href="#"><i class="fa fa-instagram"></i></a>
-                <a href="#"><i class="fa fa-linkedin"></i></a>
+                <a href="#"><i class="material-symbols-outlined">contacts</i></a>
+                <a href="#"><i class="material-symbols-outlined">duo</i></a>
+                <a href="#"><i class="material-symbols-outlined">outbox_alt</i></a>
+                <a href="#"><i class="material-symbols-outlined">settings_b_roll</i></a>
+                <a href="#"><i class="material-symbols-outlined">paid</i></a>
             </div>
-
         </div>
-
         </div>
     </footer>
 
+
+    <script>
+        //navbar 
+        window.onscroll = function () { scrollFunction() };
+
+        function scrollFunction() {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                document.getElementById("navbar").style.top = "0";
+            } else {
+                document.getElementById("navbar").style.top = "-50px";
+            }
+        }
+        // about founder
+        document.querySelector('.founder-profile').style.display = 'none';
+
+        // Tambahkan event listener untuk memicu animasi fade-in pada konten
+        document.getElementById('moreButton').addEventListener('click', function () {
+            let whiteArrowImg = document.getElementById('whiteArrowImg');
+            let grayLinkImg = document.getElementById('grayLinkImg');
+            let founderprofile = document.querySelector('.founder-profile');
+
+            whiteArrowImg.classList.toggle('hideimg');
+            grayLinkImg.classList.toggle('showimg');
+
+            //  tampilan profil pendiri untuk menampilkan/menyembunyikannya
+            if (founderprofile.style.display === 'block') {
+                founderprofile.style.display = 'none';
+            } else {
+                founderprofile.style.display = 'block';
+            }
+            // Tambahkan kelas "fade-in" setelah jeda singkat
+            setTimeout(function () {
+                founderprofile.classList.toggle('fade-in');
+            }, 300); // Sesuaikan delay (300 milidetik) 
+        });
+        //   untuk menyembunyikan profil pendiri saat halaman dimuat
+        window.addEventListener('DOMContentLoaded', function () {
+            let founderprofile = document.querySelector('.founder-profile');
+            let moreButton = document.getElementById('moreButton');
+
+            if (founderprofile.style.display === 'block') {
+                // Jika profil pendiri terlihat (tombol sudah diklik), sembunyikan tombolnya
+                moreButton.classList.add('hideimg');
+            } else {
+                // Jika profil pendiri disembunyikan (tombol tidak diklik), sembunyikan profil
+                founderprofile.style.display = 'none';
+            }
+        });
+    </script>
 </body>
 
 </html>

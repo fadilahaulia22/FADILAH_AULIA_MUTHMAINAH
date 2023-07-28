@@ -1,18 +1,63 @@
+// HEADER
 const hamburger = document.querySelector(".hamburger");
-const navMenu = document.querySelector(".nav-menu");
+const navMenu = document.querySelector(".nav_items");
 
 hamburger.addEventListener("click", () => {
   hamburger.classList.toggle("active");
   navMenu.classList.toggle("active");
 })
-
-document.querySelectorAll(".nav-link").forEach(n => n.addEventListener("click", () => {
+document.querySelectorAll(".nav_link").forEach(n => n.addEventListener("click", () => {
   hamburger.classList.remove("active");
   navMenu.classList.remove("active");
 }))
+// FORM
+const formOpenBtn = document.querySelector("#form-open"),
+  home = document.querySelector(".home"),
+  formContainer = document.querySelector(".form_container"),
+  formCloseBtn = document.querySelector(".form_close"),
+  signupBtn = document.querySelector("#signup"),
+  loginBtn = document.querySelector("#login"),
+  pwShowHide = document.querySelectorAll(".pw_hide");
 
-// main
-// slide show
+formOpenBtn.addEventListener("click", () => home.classList.add("show"));
+formCloseBtn.addEventListener("click", () => home.classList.remove("show"));
+
+pwShowHide.forEach((icon) => {
+  icon.addEventListener("click", () => {
+    let getPwInput = icon.parentElement.querySelector("input");
+    if (getPwInput.type === "password") {
+      getPwInput.type = "text";
+    } else {
+      getPwInput.type = "password";
+    }
+  });
+});
+
+signupBtn.addEventListener("click", (e) => {
+  e.preventDefault();
+  formContainer.classList.add("active");
+});
+loginBtn.addEventListener("click", (e) => {
+  e.preventDefault();
+  formContainer.classList.remove("active");
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// main slide show
 const carousel = document.querySelector(".carousel"),
   firstImg = carousel.querySelectorAll("img")[0],
   arrowIcons = document.querySelectorAll(".wrapper i");
@@ -88,17 +133,3 @@ document.addEventListener("mouseup", dragStop);
 carousel.addEventListener("touchend", dragStop);
 
 
-// ABOUT
-document.getElementById('moreButton').addEventListener('click', function () {
-  var whiteArrowImg = document.getElementById('whiteArrowImg');
-  var grayLinkImg = document.getElementById('grayLinkImg');
-  var founderprofile = document.querySelector('.founder-profile');
-
-  whiteArrowImg.classList.toggle('hideimg');
-  grayLinkImg.classList.toggle('showimg');
-
-  // Add the "fade-in" class after a short delay
-  setTimeout(function () {
-    founderprofile.classList.toggle('fade-in');
-  }, 300); // Adjust the delay (in milliseconds) based on your preference
-});
